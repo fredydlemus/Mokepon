@@ -46,34 +46,48 @@ function selectEnemyPet() {
 }
 
 function fireAttack() {
-  playerAttack = "fire";
+  playerAttack = "FIRE";
   enemyAleatoryAttack();
 }
 
 function waterAttack() {
-  playerAttack = "water";
+  playerAttack = "WATER";
   enemyAleatoryAttack();
 }
 
 function earthAttack() {
-  playerAttack = "earth";
+  playerAttack = "EARTH";
   enemyAleatoryAttack();
 }
 
 function enemyAleatoryAttack() {
   let aleatoryAttack = aleatory(1, 3);
   if (aleatoryAttack == 1) {
-    enemyAttack = "fire";
+    enemyAttack = "FIRE";
   } else if (aleatoryAttack == 2) {
-    enemyAttack = "water";
+    enemyAttack = "WATER";
   } else {
-    enemyAttack = "earth";
+    enemyAttack = "EARTH";
   }
 
-  createMessage();
+  combat();
 }
 
-function createMessage() {
+function combat() {
+  if (enemyAttack == playerAttack) {
+    createMessage("tie");
+  } else if (playerAttack == "FIRE" && enemyAttack == "EARTH") {
+    createMessage("You Win");
+  } else if (playerAttack == "WATER" && enemyAttack == "FIRE") {
+    createMessage("You Win");
+  } else if (playerAttack == "EARTH" && enemyAttack == "WATER") {
+    createMessage("You Win");
+  } else {
+    createMessage("You lose");
+  }
+}
+
+function createMessage(result) {
   let messageSection = document.getElementById("messages");
   let paragraph = document.createElement("p");
   paragraph.innerHTML =
@@ -81,7 +95,8 @@ function createMessage() {
     playerAttack +
     " and enemy's pet attacked you with " +
     enemyAttack +
-    ".";
+    ". " +
+    result;
 
   messageSection.appendChild(paragraph);
 }
