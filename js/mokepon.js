@@ -1,5 +1,7 @@
 let playerAttack;
 let enemyAttack;
+let playerLives = 3;
+let enemyLives = 3;
 
 function gameStart() {
   let petButton = document.getElementById("button-pet");
@@ -74,16 +76,37 @@ function enemyAleatoryAttack() {
 }
 
 function combat() {
+  let spanPlayerLives = document.getElementById("player-lives");
+  let spanEnemyLives = document.getElementById("enemy-lives");
+
   if (enemyAttack == playerAttack) {
     createMessage("tie");
   } else if (playerAttack == "FIRE" && enemyAttack == "EARTH") {
+    enemyLives--;
+    spanEnemyLives.innerHTML = enemyLives;
     createMessage("You Win");
   } else if (playerAttack == "WATER" && enemyAttack == "FIRE") {
+    enemyLives--;
+    spanEnemyLives.innerHTML = enemyLives;
     createMessage("You Win");
   } else if (playerAttack == "EARTH" && enemyAttack == "WATER") {
+    enemyLives--;
+    spanEnemyLives.innerHTML = enemyLives;
     createMessage("You Win");
   } else {
     createMessage("You lose");
+    playerLives--;
+    spanPlayerLives.innerHTML = playerLives;
+  }
+
+  livesReview();
+}
+
+function livesReview() {
+  if (enemyLives == 0) {
+    finalMessage("Congratulations!!! you won");
+  } else if (playerLives == 0) {
+    finalMessage("Sorry, you Lose");
   }
 }
 
@@ -97,6 +120,14 @@ function createMessage(result) {
     enemyAttack +
     ". " +
     result;
+
+  messageSection.appendChild(paragraph);
+}
+
+function finalMessage(finalResult) {
+  let messageSection = document.getElementById("messages");
+  let paragraph = document.createElement("p");
+  paragraph.innerHTML = finalResult;
 
   messageSection.appendChild(paragraph);
 }
