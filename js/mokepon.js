@@ -13,6 +13,9 @@ function gameStart() {
   waterButton.addEventListener("click", waterAttack);
   let earthButton = document.getElementById("button-earth");
   earthButton.addEventListener("click", earthAttack);
+
+  let restartButton = document.getElementById("restart");
+  restartButton.addEventListener("click", gameRestart);
 }
 
 function selectPlayerPet() {
@@ -130,6 +133,17 @@ function finalMessage(finalResult) {
   paragraph.innerHTML = finalResult;
 
   messageSection.appendChild(paragraph);
+
+  let fireButton = document.getElementById("button-fire");
+  fireButton.disabled = true;
+  let waterButton = document.getElementById("button-water");
+  waterButton.disabled = true;
+  let earthButton = document.getElementById("button-earth");
+  earthButton.disabled = true;
+}
+
+function gameRestart() {
+  location.reload();
 }
 
 function aleatory(min, max) {
