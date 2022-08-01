@@ -4,6 +4,12 @@ let playerLives = 3;
 let enemyLives = 3;
 
 function gameStart() {
+  let attackSection = document.getElementById("select-attack");
+  attackSection.style.display = "none";
+
+  let restartSection = document.getElementById("restart");
+  restartSection.style.display = "none";
+
   let petButton = document.getElementById("button-pet");
   petButton.addEventListener("click", selectPlayerPet);
 
@@ -19,6 +25,11 @@ function gameStart() {
 }
 
 function selectPlayerPet() {
+  let attackSection = document.getElementById("select-attack");
+  attackSection.style.display = "block";
+  let selectPetSection = document.getElementById("select-pet");
+  selectPetSection.style.display = "none";
+
   let hipodogeInput = document.getElementById("hipodoge");
   let capipepoInput = document.getElementById("capipepo");
   let ratigueyaInput = document.getElementById("ratigueya");
@@ -140,6 +151,9 @@ function finalMessage(finalResult) {
   waterButton.disabled = true;
   let earthButton = document.getElementById("button-earth");
   earthButton.disabled = true;
+
+  let restartSection = document.getElementById("restart");
+  restartSection.style.display = "block";
 }
 
 function gameRestart() {
