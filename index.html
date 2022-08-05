@@ -10,24 +10,38 @@
             </script>
         <title>Mokepon</title>
         <script src="./js/mokepon.js" ></script>
+        <link rel="stylesheet" href="./styles.css">
     </head>
     <body>
-        <h1>MOKEPON! 🔥💧🍀</h1>
-
+        
         <section id="select-pet">
-            <h2>Choose your pet:</h2>
+            <h1 class="title">Mokepon</h1>
 
-            <label for="hipodoge">Hipodoge</label>
-            <input type="radio" name="pet" id="hipodoge"  />
-            <label for="capipepo">Capipepo</label>
-            <input type="radio" name="pet" id="capipepo" />
-            <label for="ratigueya">Ratigueya</label>
-            <input type="radio" name="pet" id="ratigueya" />
+            <h2 class="subtitle">Choose your pet:</h2>
+
+            <div class="cards">
+                <label class="mokepon-card" for="hipodoge">
+                    <p>Hipodoge</p>
+                    <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="Hipodoge" />
+                </label>
+                <input type="radio" name="pet" id="hipodoge"  />
+                <label class="mokepon-card" for="capipepo">
+                    <p>capipepo</p>
+                    <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="Capipepo" />
+                </label>
+                <input type="radio" name="pet" id="capipepo" />
+                <label class="mokepon-card" for="ratigueya">
+                    <p>Ratigueya</p>
+                    <img src="./assets/mokepons_mokepon_ratigueya_attack.png" alt="Ratigueya" />
+                </label>
+                <input type="radio" name="pet" id="ratigueya" />
+            </div>
 
             <button id="button-pet">Choose!!!</button>
         </section>
 
         <section id="select-attack">
+            <h1 class="title">MOKEPON! 🔥💧🍀</h1>
             <h2>Choose your attack:</h2>
             <p>Your pet <span id="player-pet"></span> have <span id="player-lives">3</span> lives</p>
             <p>Enemy's pet <span id="enemy-pet"></span> has <span id="enemy-lives">3</span> lives </p>
