@@ -26,7 +26,7 @@ function gameStart() {
 
 function selectPlayerPet() {
   let attackSection = document.getElementById("select-attack");
-  attackSection.style.display = "block";
+  attackSection.style.display = "flex";
   let selectPetSection = document.getElementById("select-pet");
   selectPetSection.style.display = "none";
 
@@ -125,25 +125,26 @@ function livesReview() {
 }
 
 function createMessage(result) {
-  let messageSection = document.getElementById("messages");
-  let paragraph = document.createElement("p");
-  paragraph.innerHTML =
-    "Your pet attacked with " +
-    playerAttack +
-    " and enemy's pet attacked you with " +
-    enemyAttack +
-    ". " +
-    result;
+  let messageSection = document.getElementById("results");
+  let playerAttacks = document.getElementById("player-attacks");
+  let enemyAttacks = document.getElementById("enemy-attacks");
 
-  messageSection.appendChild(paragraph);
+  let newPlayerAttack = document.createElement("p");
+  let newEnemyAttack = document.createElement("p");
+  let notification = document.createElement("p");
+
+  messageSection.innerHTML = result;
+  newPlayerAttack.innerHTML = playerAttack;
+  newEnemyAttack.innerHTML = enemyAttack;
+
+  playerAttacks.appendChild(newPlayerAttack);
+  enemyAttacks.appendChild(newEnemyAttack);
 }
 
 function finalMessage(finalResult) {
-  let messageSection = document.getElementById("messages");
-  let paragraph = document.createElement("p");
-  paragraph.innerHTML = finalResult;
+  let messageSection = document.getElementById("results");
 
-  messageSection.appendChild(paragraph);
+  messageSection.innerHTML = finalResult;
 
   let fireButton = document.getElementById("button-fire");
   fireButton.disabled = true;
