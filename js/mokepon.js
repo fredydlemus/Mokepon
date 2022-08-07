@@ -1,39 +1,44 @@
+const attackSection = document.getElementById("select-attack");
+const restartSection = document.getElementById("restart");
+const petButton = document.getElementById("button-pet");
+const fireButton = document.getElementById("button-fire");
+const waterButton = document.getElementById("button-water");
+const earthButton = document.getElementById("button-earth");
+const restartButton = document.getElementById("button-restart");
+
+const selectPetSection = document.getElementById("select-pet");
+const hipodogeInput = document.getElementById("hipodoge");
+const capipepoInput = document.getElementById("capipepo");
+const ratigueyaInput = document.getElementById("ratigueya");
+const spanPlayerPet = document.getElementById("player-pet");
+
+const spanEnemyPet = document.getElementById("enemy-pet");
+
+const spanPlayerLives = document.getElementById("player-lives");
+const spanEnemyLives = document.getElementById("enemy-lives");
+
+const messageSection = document.getElementById("results");
+const playerAttacks = document.getElementById("player-attacks");
+const enemyAttacks = document.getElementById("enemy-attacks");
+
 let playerAttack;
 let enemyAttack;
 let playerLives = 3;
 let enemyLives = 3;
 
 function gameStart() {
-  let attackSection = document.getElementById("select-attack");
   attackSection.style.display = "none";
-
-  let restartSection = document.getElementById("restart");
   restartSection.style.display = "none";
-
-  let petButton = document.getElementById("button-pet");
   petButton.addEventListener("click", selectPlayerPet);
-
-  let fireButton = document.getElementById("button-fire");
   fireButton.addEventListener("click", fireAttack);
-  let waterButton = document.getElementById("button-water");
   waterButton.addEventListener("click", waterAttack);
-  let earthButton = document.getElementById("button-earth");
   earthButton.addEventListener("click", earthAttack);
-
-  let restartButton = document.getElementById("restart");
   restartButton.addEventListener("click", gameRestart);
 }
 
 function selectPlayerPet() {
-  let attackSection = document.getElementById("select-attack");
   attackSection.style.display = "flex";
-  let selectPetSection = document.getElementById("select-pet");
   selectPetSection.style.display = "none";
-
-  let hipodogeInput = document.getElementById("hipodoge");
-  let capipepoInput = document.getElementById("capipepo");
-  let ratigueyaInput = document.getElementById("ratigueya");
-  let spanPlayerPet = document.getElementById("player-pet");
 
   if (hipodogeInput.checked) {
     spanPlayerPet.innerHTML = "Hipodoge";
@@ -50,7 +55,6 @@ function selectPlayerPet() {
 
 function selectEnemyPet() {
   let aleatoryPet = aleatory(1, 3);
-  let spanEnemyPet = document.getElementById("enemy-pet");
 
   if (aleatoryPet == 1) {
     spanEnemyPet.innerHTML = "Hipodoge";
@@ -90,9 +94,6 @@ function enemyAleatoryAttack() {
 }
 
 function combat() {
-  let spanPlayerLives = document.getElementById("player-lives");
-  let spanEnemyLives = document.getElementById("enemy-lives");
-
   if (enemyAttack == playerAttack) {
     createMessage("tie");
   } else if (playerAttack == "FIRE" && enemyAttack == "EARTH") {
@@ -125,10 +126,6 @@ function livesReview() {
 }
 
 function createMessage(result) {
-  let messageSection = document.getElementById("results");
-  let playerAttacks = document.getElementById("player-attacks");
-  let enemyAttacks = document.getElementById("enemy-attacks");
-
   let newPlayerAttack = document.createElement("p");
   let newEnemyAttack = document.createElement("p");
   let notification = document.createElement("p");
@@ -142,18 +139,12 @@ function createMessage(result) {
 }
 
 function finalMessage(finalResult) {
-  let messageSection = document.getElementById("results");
-
   messageSection.innerHTML = finalResult;
 
-  let fireButton = document.getElementById("button-fire");
   fireButton.disabled = true;
-  let waterButton = document.getElementById("button-water");
   waterButton.disabled = true;
-  let earthButton = document.getElementById("button-earth");
   earthButton.disabled = true;
 
-  let restartSection = document.getElementById("restart");
   restartSection.style.display = "block";
 }
 
